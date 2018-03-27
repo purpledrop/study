@@ -1,1 +1,3 @@
-include ':cicd'
+include 'cicd'
+project(':cicd').projectDir = file('cicd')
+
