@@ -31,3 +31,14 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
+
+
+build.doLast {
+    def today = new Date().format('yyyyMMdd_hh');
+    copy{
+        from('cicd/build/libs')
+        into('build/libs')
+        include('cicd-0.01-SNAPSHOT.jar')
+        rename('cicd-0.01-SNAPSHOT.jar','CICD' + "_"+ today + '.jar')
+    }
+}
